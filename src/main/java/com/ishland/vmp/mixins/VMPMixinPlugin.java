@@ -41,6 +41,9 @@ public class VMPMixinPlugin implements IMixinConfigPlugin {
             return FabricLoader.getInstance().isModLoaded("krypton");
         if (mixinClassName.startsWith("com.ishland.vmp.mixins.networking.avoid_deadlocks"))
             return !FabricLoader.getInstance().isModLoaded("raknetify");
+        if(mixinClassName.equals("com.ishland.vmp.mixins.general.cache_ops.fluid_state.MixinAbstractBlockAbstractBlockState"))
+            return !FabricLoader.getInstance().isModLoaded("fluidlogged");
+
         return true;
     }
 

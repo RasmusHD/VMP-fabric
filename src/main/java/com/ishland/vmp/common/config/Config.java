@@ -19,6 +19,8 @@ public class Config {
     public static final boolean USE_MULTIPLE_NETTY_EVENT_LOOPS;
     public static final boolean USE_ASYNC_PORTALS;
 
+    public static final boolean PRIORITY_HANDLER_LOGGING;
+
     static {
         final Properties properties = new Properties();
         final Path path = FabricLoader.getInstance().getConfigDir().resolve("vmp.properties");
@@ -35,6 +37,7 @@ public class Config {
         USE_OPTIMIZED_ENTITY_TRACKING = getBoolean(properties, "use_optimized_entity_tracking", true);
         USE_MULTIPLE_NETTY_EVENT_LOOPS = getBoolean(properties, "use_multiple_netty_event_loops", true);
         USE_ASYNC_PORTALS = getBoolean(properties, "use_async_portals", true);
+        PRIORITY_HANDLER_LOGGING = getBoolean(properties, "priority_handler_logging", false);
         try (OutputStream out = Files.newOutputStream(path, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             properties.store(out, "Configuration file for VMP");
         } catch (IOException e) {
