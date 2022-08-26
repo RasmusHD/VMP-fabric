@@ -169,10 +169,12 @@ public class PacketPriorityHandler extends ChannelDuplexHandler {
             }
             this.queue.addAll(retainedPackets);
             this.sentChunkPacketHashes.clear();
-            System.out.println("VMP: Stopped priority handler, retained %d packets".formatted(retainedPackets.size()));
+            if(Config.PRIORITY_HANDLER_LOGGING)
+                System.out.println("VMP: Stopped priority handler, retained %d packets".formatted(retainedPackets.size()));
         } else if (evt == START_PRIORITY) {
             this.isEnabled = true;
-            System.out.println("VMP: Started priority handler");
+            if(Config.PRIORITY_HANDLER_LOGGING)
+                System.out.println("VMP: Started priority handler");
         } else {
             super.userEventTriggered(ctx, evt);
         }
